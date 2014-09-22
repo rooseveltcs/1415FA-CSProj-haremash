@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 
 public class Calculate extends JFrame implements ActionListener {
+
+	private static final long serialVersionUID = 1L;
 	public JTextField text = new JTextField(10);
 
 	public Calculate() {
