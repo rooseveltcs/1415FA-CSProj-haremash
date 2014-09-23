@@ -10,8 +10,9 @@ public class Calculate extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 
-	public JTextField nonEditableText = new JTextField(10);
-	public JTextField text = new JTextField(10);
+	public static JTextField nonEditableText = new JTextField(10);
+	public static JTextField text = new JTextField(10);
+	public static String notEditableText = "";
 
 	public JButton button0 = new JButton("0");
 	public JButton button1 = new JButton("1");
@@ -23,6 +24,8 @@ public class Calculate extends JFrame implements ActionListener {
 	public JButton button7 = new JButton("7");
 	public JButton button8 = new JButton("8");
 	public JButton button9 = new JButton("9");
+	public JButton buttonPlus = new JButton("+");
+	public JButton buttonMinus = new JButton("-");
 	public JButton buttonClear = new JButton("CLEAR");
 
 	public Calculate() {
@@ -43,6 +46,8 @@ public class Calculate extends JFrame implements ActionListener {
 		button7.addActionListener(this);
 		button8.addActionListener(this);
 		button9.addActionListener(this);
+		buttonPlus.addActionListener(this);
+		buttonMinus.addActionListener(this);
 		buttonClear.addActionListener(this);
 		add(nonEditableText);
 		add(text);
@@ -56,6 +61,9 @@ public class Calculate extends JFrame implements ActionListener {
 		add(button7);
 		add(button8);
 		add(button9);
+		add(buttonPlus);
+		add(buttonMinus);
+		add(buttonClear);
 
 	}
 
@@ -63,25 +71,51 @@ public class Calculate extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent ae) {
 		String action = ae.getActionCommand();
 		if (action.equals("0")) {
-			nonEditableText.setText("0");
+			assignText("0");
 		} else if (action.equals("1")) {
-			nonEditableText.setText("1");
+			assignText("1");
 		} else if (action.equals("2")) {
-			nonEditableText.setText("2");
+			assignText("2");
 		} else if (action.equals("3")) {
-			nonEditableText.setText("3");
+			assignText("3");
 		} else if (action.equals("4")) {
-			nonEditableText.setText("4");
+			assignText("4");
 		} else if (action.equals("5")) {
-			nonEditableText.setText("5");
+			assignText("5");
 		} else if (action.equals("6")) {
-			nonEditableText.setText("6");
+			assignText("6");
 		} else if (action.equals("7")) {
-			nonEditableText.setText("7");
+			assignText("7");
 		} else if (action.equals("8")) {
-			nonEditableText.setText("8");
+			assignText("8");
 		} else if (action.equals("9")) {
-			nonEditableText.setText("9");
+			assignText("9");
+		} else if (action.equals("+")) {
+			assignText(" + ");
+		} else if (action.equals("-")) {
+			assignText(" - ");
+		} else if (action.equals("CLEAR")) {
+			assignText("CLEAR");
+		} else {
+			assignText(text.getText());
+		}
+		System.out.println(notEditableText + " " + text.getText());
+	}
+
+	public static void assignText(String pressed) {
+		System.out.println("Pressed: " + pressed);
+		if (pressed.equals("CLEAR")) {
+			text.setText("");
+			nonEditableText.setText("");
+			notEditableText = "";
+		} else if (pressed.equals(" + ") || pressed.equals(" - ")) {
+			text.setText("");
+			notEditableText += pressed;
+			nonEditableText.setText(notEditableText);
+		} else {
+			notEditableText += pressed;
+			nonEditableText.setText(notEditableText);
+			text.setText(text.getText() + pressed);
 		}
 	}
 
