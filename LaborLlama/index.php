@@ -13,24 +13,29 @@
   </head>
   
   <body>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
 
-		<div class="row">
-			<div class="col-md-1"></div>
-			<div class="col-md-1"></div>
-			<div class="col-xs-12 col-sm-6 col-md-8">
-				<div class="jumbotron">
-					<div class="row"><div class="col-md-6 col-md-offset-1"><h1> Labor Llama </h1></div></div>
-					<div class="col-md-3 col-md-offset-1"><p> Coming Soon... </p></div><br>
-				</div>	
-				<a href="http://www.laborllama.com/profile.php/"><button class="btn btn-primary">Login with Facebook</button></a>
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-1"></div>
+		<div class="col-xs-12 col-sm-6 col-md-8">
+			<div class="jumbotron">
+				<div class="row"><div class="col-md-6 col-md-offset-1"><h1> Labor Llama </h1></div></div>
+				<div class="col-md-3 col-md-offset-1"><p> Coming Soon... </p></div><br>
 			</div>
-			<div class="col-md-1"></div>
-			<div class="col-md-1"></div>
+			<div class="row">
+			  <div class="col-xs-8 col-sm-4 col-md-6">
+			  	<a href="http://www.laborllama.com/profile.php/"><button type="button" class="btn btn-lg btn-primary">Login with Facebook</button></a>
+			  </div>
+			  <div class="col-xs-8 col-sm-4 col-md-6">
+			  	<a href="http://www.laborllama.com/demoprofile.php/"><button type="button" class="btn btn-lg btn-primary">Demo Login</button></a>
+			  </div>
+			</div>	
+			
 		</div>
+		<div class="col-md-1"></div>
+		<div class="col-md-1"></div>
+	</div>
 	
 	
   </body>

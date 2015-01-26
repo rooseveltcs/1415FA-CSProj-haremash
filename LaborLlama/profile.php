@@ -29,21 +29,16 @@
 	use Facebook\FacebookHttpable;
 	use Facebook\FacebookCurlHttpClient;
 	use Facebook\FacebookCurl;
-
 	session_start();
-
 	 if(isset($_REQUEST['logout'])){
 	 	unset($_SESSION['fb_token']);
 	 }
-
-	$app_id = "";
-	$app_secret = "";
-	$redirect_url = "http://www.laborllama.com/fbaccess.php/";
-
+	$app_id = "1500730473545722";
+	$app_secret = "1b90fdf9f0ebe8bca9985c76150186b3";
+	$redirect_url = "http://www.laborllama.com/profile.php/";
 	FacebookSession::setDefaultApplication($app_id,$app_secret);
 	$helper = new FacebookRedirectLoginHelper($redirect_url);
 	$sess = $helper->getSessionFromRedirect();
-
 	if(isset($_SESSION['fb_token'])){
 	 	$sess = new FacebookSession($_SESSION['fb_token']);
 	 	try{
@@ -52,13 +47,10 @@
 			print_r($e);
 		}
 	}
-
 	$loggedin = false;
 	//getting email as well as user permission
 	$login_url = $helper->getLoginUrl(array('email'));
-
 	$logout = 'http://www.laborllama.com/';
-
 	if(isset($sess)){
 		$_SESSION['fb_token'] = $sess->getToken();
 		$request = new FacebookRequest($sess, 'GET', '/me');
@@ -81,7 +73,6 @@
 		VALUES ('$user_id', '$user_firstName', '$user_lastName', '$user_name', '$user_email')";
 
 		if (mysqli_query($conn, $sql)) {
-		    $welcome_message = "Welcome to Labor Llama";
 		} else {}
 	}
 
@@ -102,9 +93,6 @@
 	if($row[1] == NULL) {
 		$user_categories = "";
 	}*/
-	
-
-
 ?>
 
 <!DOCTYPE html>
@@ -113,27 +101,51 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Labor Llama Home</title>
+    <title>Labor Llama Profile</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
   </head>
+
   <body>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-	
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    
+    
+    
+
+
+
 	<?php if(!$loggedin){ ?>
-		<h3><?php echo $welcome_message."<br>"; ?></h3>
 		<a href="<?php echo $login_url; ?>">
 			<button class="btn btn-primary">Sign Up with Facebook</button>
 		</a>
 	<?php }else { ?>
-		<h1>hi <b><?php echo $user_name; ?></b> </h1>
-	    <p>Email: 
-	    	<code><?php echo $user_email; ?></code></p>
-	    <a href="<?php echo $logout; ?>">
-	    	<button class="btn btn-primary">Logout</button>
-	    </a>	
+		<div class="userProfile">
+			<nav class="navbar navbar-default navbar-static-top">
+				<div class="container">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="http://www.laborllama.com/">Labor Llama</a>
+					</div>
+					<div id="navbar" class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+							<li class="active"><a>Profile</a></li>
+							<li><a>Work</a></li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="<?php echo $logout; ?>">Logout</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			<div class="container">
+				<div class="well">
+					<h1>hi <b><?php echo $user_name; ?></b> </h1>
+				    <p>Email: 
+				    	<code><?php echo $user_email; ?></code></p>
+			    </div>
+		    </div>
+	    </div>	
 	<?php } ?>
 
 	<?php		
