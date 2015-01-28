@@ -24,12 +24,8 @@
 				<div class="col-md-3 col-md-offset-1"><p> Coming Soon... </p></div><br>
 			</div>
 			<div class="row">
-			  <div class="col-xs-8 col-sm-4 col-md-6">
-			  	<a href="http://www.laborllama.com/profile.php/"><button type="button" class="btn btn-lg btn-primary">Login with Facebook</button></a>
-			  </div>
-			  <div class="col-xs-8 col-sm-4 col-md-6">
-			  	<a href="http://www.laborllama.com/demoprofile.php/"><button type="button" class="btn btn-lg btn-primary">Demo Login</button></a>
-			  </div>
+			  	<a href="http://www.laborllama.com/profile.php/"><button type="button" class="btn btn-primary btn-lg btn-block">Login with Facebook</button></a><br>
+			  	<a href="http://www.laborllama.com/work.php/"><button type="button" class="btn btn-primary btn-lg btn-block">Demo Login</button></a>
 			</div>	
 			
 		</div>

@@ -1,8 +1,8 @@
 <?php
 	$servername = "localhost";
-	$username = "laborlla_user";
-	$password = "ll4m4";
-	$dbname = "laborlla_users";
+	$username = "";
+	$password = "";
+	$dbname = "";
 
 	@$conn = mysqli_connect($servername, $username, $password)
         or die("Could not connect to server " . mysql_error()); 

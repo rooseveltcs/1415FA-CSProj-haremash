@@ -33,8 +33,8 @@
 	 if(isset($_REQUEST['logout'])){
 	 	unset($_SESSION['fb_token']);
 	 }
-	$app_id = "1500730473545722";
-	$app_secret = "1b90fdf9f0ebe8bca9985c76150186b3";
+	$app_id = "";
+	$app_secret = "";
 	$redirect_url = "http://www.laborllama.com/profile.php/";
 	FacebookSession::setDefaultApplication($app_id,$app_secret);
 	$helper = new FacebookRedirectLoginHelper($redirect_url);
@@ -75,24 +75,6 @@
 		if (mysqli_query($conn, $sql)) {
 		} else {}
 	}
-
-	/*$query = "SELECT about, categories FROM userBase WHERE fbid = '".$user_id."'";
-	$result = mysqli_query($conn, $query);
-	$row = mysqli_fetch_row($result);
-	echo "Here it is: ".$row[0];
-	if($row[0] == NULL) {
-		echo "Inside the if statement";
-		$user_about = $_POST["user_about"];
-		$query = "UPDATE userBase SET about='$user_about' WHERE fbid = '".$user_id."'";
-		if(mysqli_query($conn, $query)) {
-			echo "yay";
-		}else {
-			echo "boo";
-		}
-	}
-	if($row[1] == NULL) {
-		$user_categories = "";
-	}*/
 ?>
 
 <!DOCTYPE html>
@@ -117,15 +99,25 @@
 
 
 	<?php if(!$loggedin){ ?>
-		<a href="<?php echo $login_url; ?>">
-			<button class="btn btn-primary">Sign Up with Facebook</button>
-		</a>
+		<br>
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-1"></div>
+			<div class="col-xs-12 col-sm-6 col-md-8">
+				<div class="well">
+					<h3 class="text-right">Welcome to Labor Llama, please sign up with your facebook account.</h3>
+					<a href="<?php echo $login_url; ?>">
+						<button class="btn btn-primary">Sign Up with Facebook</button>
+					</a>
+				</div>
+			</div>
+		</div>
 	<?php }else { ?>
 		<div class="userProfile">
 			<nav class="navbar navbar-default navbar-static-top">
 				<div class="container">
 					<div class="navbar-header">
-						<a class="navbar-brand" href="http://www.laborllama.com/">Labor Llama</a>
+						<a class="navbar-brand" href="http://www.laborllama.com/"><strong>Labor Llama</strong></a>
 					</div>
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
@@ -147,17 +139,6 @@
 		    </div>
 	    </div>	
 	<?php } ?>
-
-	<?php		
-
-		$query = "SELECT username, first_name FROM userBase WHERE username = '".$userInputName."'";
-		$result = mysqli_query($conn, $query);
-		$row = mysqli_fetch_row($result);
-		$db_username = $row[0];
-		$db_first_name = $row[1];
-		
-		//echo "Here is a line of code that should print out the username from the database (if it exsists): ".$db_username."<br>";
-	?>
     
   </body>
 </html>
